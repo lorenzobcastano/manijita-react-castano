@@ -1,3 +1,4 @@
+import  CartWidget  from "./CartWidget"; 
 import React  from "react"
 const NavBar = () => {
     let Links = [
@@ -29,6 +30,7 @@ const NavBar = () => {
                     ))
                 }
             </ul>
+            <CartWidget/>
         </div>
     </div>
     )
