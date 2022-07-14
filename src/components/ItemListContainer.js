@@ -8,7 +8,7 @@ import products from "../products.json"
 
 const ItemListContainer = ({greeting}) => {
     
-const getProduct = new Promise((resolve,reject)=>{
+new Promise((resolve,reject)=>{
     setTimeout(()=>{
         resolve(products,setLoader(false));
     },2000)
