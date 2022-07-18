@@ -1,43 +1,30 @@
  import React,{useState,useEffect} from 'react'
  import ItemDetail from './ItemDetail';
- // import detail from "..detail.json";
 
- const detail={
- "id": 1,
- "title": "iPhone 9",
- "description": "An apple mobile which is nothing like apple",
- "price": 549,
- "discountPercentage": 12.96,
- "rating": 4.69,
- "stock": 94,
- "brand": "Apple",
- "category": "smartphones",
- "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
- "images": [
-     "https://dummyjson.com/image/i/products/1/1.jpg",
-     "https://dummyjson.com/image/i/products/1/2.jpg",
-     "https://dummyjson.com/image/i/products/1/3.jpg",
-     "https://dummyjson.com/image/i/products/1/4.jpg",
-     "https://dummyjson.com/image/i/products/1/thumbnail.jpg"
- ]
- }
- const ItemDetailContainer = () => {
 
-    const[detail,setDetail] = useState([]);
-    const [loading,setLoading]= useState(true);
+const myMock =   {"nombre":"Fernet","precio":900,"id":1,"pictureUrl" :"./img/descarga.jfif","cantidad" :1, "description":"Un rico fernet para disfrutar con amigos"} 
 
-     const getItem= new Promise((resolve)=>{
-         setTimeout(()=>{
-             resolve(detail,setLoading(false));
-         },2000);
-         console.log(detail);
-     });
-     getItem.then((detail)=>setDetail(detail))
 
- return (
- <div className="">
-     {loading ? <span>Cargando Productos...</span>:<ItemDetail items={detail}/>}
- </div>
- )
- }
+const ItemDetailContainer = () => {
+
+    const [loading, setLoading] = useState(true);
+    const [item, setItem] = useState([]);
+
+
+    const getItem = new Promise ( (resolve,reject) => {
+        resolve(false)
+    })
+
+    getItem.then(()=> {
+        setTimeout(setLoading,2000,)
+        setTimeout(setItem,2000,myMock)
+    }).catch(()=> alert("Ocurrio un error"))
+
+
+    return (<div className="mt-10">
+                {loading ? (<h3>Cargando detalles...</h3>) : (<ItemDetail item={item}/>)}
+            </div>
+            )
+}
+
  export default ItemDetailContainer;

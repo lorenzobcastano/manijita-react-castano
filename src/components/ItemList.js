@@ -1,5 +1,6 @@
 import React from 'react'
-import Item from './Item'
+import Item from './Item';
+
 
 const ItemList = ({items}) => {
 return (
@@ -22,4 +23,4 @@ return (
 );
 };
 
-export default ItemList
+export default ItemList;
