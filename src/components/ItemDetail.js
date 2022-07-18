@@ -1,6 +1,6 @@
-import React from 'react'
+ import React from 'react'
 
-    const ItemDetail = ({id,title,description,price,discountPercentage,rating,stock,brand,category,images}) => {
+    const ItemDetail = ({title,images,description,price,discountPercentage,rating,stock,brand,category,id}) => {
 return (
     <div className='card '> 
 <div className="card-body"  >
@@ -19,4 +19,6 @@ return (
 )
 }
 export default ItemDetail;
+
+
 
