@@ -1,6 +1,6 @@
  import React from 'react'
-
-
+ import ItemCount from "./ItemCount"
+import {Link} from "react-router-dom"
     function ItemDetail ({item}) {
 
         return (
@@ -15,7 +15,8 @@
                     <h1 className="card-title justify-center m-auto text-5xl p-10">{item.nombre}</h1>
                     <p className='text-center justify-center m-auto text-xl p-10'>{item.description}</p>
                     <p className='text-center justify-center m-auto text-xl  p-10 font-bold'>Precio ${item.precio}</p>
-                    <a href={'/' + item.id} className="btn btn outline-primary">Ir al carrito</a>
+                    <a href={'/' + item.id} className="btn btn outline-primary"><div><ItemCount stock={5} initial={1} onAdd={(n)=>alert(`Seleccionaste ${n} bebidas`)}/></div></a>
+                    <Link to={"/"}><button className="btn btn-accent w-24 my-5">Volver</button></Link>
                  </div>
                 
             </div>   

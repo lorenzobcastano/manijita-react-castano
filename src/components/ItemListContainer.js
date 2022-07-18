@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import ItemCount from './ItemCount';
 import ItemList from './ItemList';
 import products from "../products.json"
+import { useParams } from 'react-router-dom';
 
 
 
@@ -20,7 +20,7 @@ const [loader,setLoader]= useState(true);
 return (
 <div>
 <div className=''> {greeting}
-<ItemCount stock={5} initial={1} onAdd={(n)=>alert(`Seleccionaste ${n} bebidas`)}/>
+
 </div >
 <div className="">
     {loader ? <span>Cargando Productos...</span>:<ItemList items={products}/>}
