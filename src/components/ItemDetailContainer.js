@@ -23,12 +23,12 @@
  }
  const ItemDetailContainer = () => {
 
-    const[detail,setDetail] = useState(false);
+    const[detail,setDetail] = useState([]);
     const [loading,setLoading]= useState(true);
 
      const getItem= new Promise((resolve)=>{
          setTimeout(()=>{
-             resolve(detail,setDetail(false));
+             resolve(detail,setLoading(false));
          },2000);
          console.log(detail);
      });
