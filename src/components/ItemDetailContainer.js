@@ -2,10 +2,12 @@
  import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
 
-const myMock =   {"nombre":"Fernet","precio":900,"id":1,"pictureUrl" :"./img/descarga.jfif","cantidad" :1, "description":"Un rico fernet para disfrutar con amigos"} 
+const myMock =   {"nombre":"Fernet","precio":900,"id":1,"pictureUrl" :"../img/descarga.jfif","cantidad" :1, "description":"Un rico fernet para disfrutar con amigos"} 
 
 
 const ItemDetailContainer = () => {
+
+    let {Item} = useParams();
 
     const [loading, setLoading] = useState(true);
     const [item, setItem] = useState([]);

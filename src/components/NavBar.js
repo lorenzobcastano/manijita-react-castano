@@ -1,7 +1,7 @@
 import  CartWidget  from "./CartWidget"; 
 import React  from "react"
 import {Link,NavLink} from "react-router-dom";
-
+import navbar from "./navbar.css"
 const NavBar = () => {
     // let Links = [
     //     {name:"INICIO",link:"/"},
@@ -16,12 +16,11 @@ const NavBar = () => {
             <div  className="font-bold text-2x1 cursor-pointer flex items-center font-[Poppins]
         text-gray-800">
             <span className="text-3x1 text-indigo-600 mr-1 pt-2">
-            <ion-icon name="bag-handle"></ion-icon>
+            <Link className={({isActive})=>(isActive? "active" : "")} to="/"><ion-icon name="bag-handle"></ion-icon>Manijita Bebidas</Link>
             </span>
-            <Link to="/">Manijita Bebidas</Link>
             <ul className="md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in">
-            <li><NavLink to="/category/bebidas">Bebidas</NavLink></li>
-            <li><NavLink to="/category/combos">Combos</NavLink></li>
+            <li><NavLink to="/categoria/bebidas"><div>Bebidas</div></NavLink></li>
+            <li><NavLink to="/categoria/combos"><div>Combos</div></NavLink></li>
             <li>Nuestras sucursales</li>
                 {
                 /* {
@@ -32,6 +31,7 @@ const NavBar = () => {
                     ))
                 } */}
             </ul>
+            
             <div className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden">
             
             <ion-icon name="grid-outline"></ion-icon>
