@@ -1,7 +1,22 @@
  import React from 'react'
  import ItemCount from "./ItemCount"
-import {Link} from "react-router-dom"
+import {Link, NavLink} from "react-router-dom"
+import { useState } from 'react';
+
     function ItemDetail ({item}) {
+
+        const [onAddStatus,setonAddStatus]=useState(false)
+        
+        
+        function onAddEvent(n){
+            setonAddStatus(true)
+            alert(`HAS AGREGADO AL CARRITO:
+            ${item.nombre}
+            Precio:${item.precio}
+            Cantidad:${n}
+            Vas a pagar : $ ${n*item.precio}`
+            )
+        }
 
         return (
     
@@ -15,7 +30,7 @@ import {Link} from "react-router-dom"
                     <h1 className="card-title justify-center m-auto text-5xl p-10">{item.nombre}</h1>
                     <p className='text-center justify-center m-auto text-xl p-10'>{item.description}</p>
                     <p className='text-center justify-center m-auto text-xl  p-10 font-bold'>Precio ${item.precio}</p>
-                    <a href={'/' + item.id} className="btn btn outline-primary"><div><ItemCount stock={5} initial={1} onAdd={(n)=>alert(`Seleccionaste ${n} bebidas`)}/></div></a>
+                    {onAddStatus ? <NavLink to="/cart" className="btn btn-primary bg-primary w-24 mx-auto">Ir al Carrito</NavLink>:<div><ItemCount stock={5} initial={1} onAdd={(n)=>onAddEvent(n)}/></div> }
                     <Link to={"/"}><button className="btn btn-accent w-24 my-5">Volver</button></Link>
                  </div>
                 
