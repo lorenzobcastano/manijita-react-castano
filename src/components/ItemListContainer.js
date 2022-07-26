@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import ItemList from './ItemList';
 import products from "../products.json"
-import { useParams } from 'react-router-dom';
+
 
 
 

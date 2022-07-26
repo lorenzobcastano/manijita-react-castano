@@ -1,21 +1,17 @@
  import React from 'react'
  import ItemCount from "./ItemCount"
 import {Link, NavLink} from "react-router-dom"
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import CartContext from '../context/CartContext';
 
     function ItemDetail ({item}) {
 
         const [onAddStatus,setonAddStatus]=useState(false)
-        
+        const {addItem} = useContext(CartContext)
         
         function onAddEvent(n){
             setonAddStatus(true)
-            alert(`HAS AGREGADO AL CARRITO:
-            ${item.nombre}
-            Precio:${item.precio}
-            Cantidad:${n}
-            Vas a pagar : $ ${n*item.precio}`
-            )
+           addItem({...item,quantity:n});
         }
 
         return (
