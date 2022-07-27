@@ -5,6 +5,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import {BrowserRouter,Outlet,Routes,Route} from "react-router-dom";
 import NotFoundPage from './NotFoundPage';
 import { CartProvider } from "./context/CartContext";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/" element={<ItemListContainer greeting = {"Bienvenido a Manijita Bebidas este es nuestro catalogo!"}/>} />
       <Route path="/categoria/:nombreCategoria" element={<ItemListContainer/>} />
       <Route path="/producto/:Item" element={<ItemDetailContainer/>} />
+      <Route path="/cart" element={<Cart />} />
       <Route path='*' element={<NotFoundPage/>}/>
     </Routes>
     </div>

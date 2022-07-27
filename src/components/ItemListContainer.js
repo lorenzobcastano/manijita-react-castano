@@ -23,7 +23,7 @@ return (
 
 </div >
 <div className="">
-    {loader ? <span>Cargando Productos...</span>:<ItemList items={products}/>}
+    {loader ? <span>CARGANDO...</span>:<ItemList items={products}/>}
 </div>
 </div>
 );

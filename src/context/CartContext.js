@@ -11,14 +11,21 @@ const CartProvider = ({ children }) => {
         return exist
     }
 
+    const totalItems = cart.map(item => item.quantity).reduce((prev,curr) => prev + curr, 0)
+    const totalPrice = cart.map(item => item.precio * item.quantity).reduce((prev,curr) => prev + curr, 0)
+
     const addItem = (item) => {
         const exist = isInCart(item.id)
         if (!exist) {
             setCart([...cart, item])
-            console.log({item})
+            console.log(item)
             console.log(cart)
         } else {
-            alert("Tal producto ya esta en el carrito")
+            const index = cart.findIndex(x => x.id === item.id)
+            const cart_ = cart.slice()
+            cart_[index].quantity = cart_[index].quantity+ item.quantity
+            setCart(cart_)
+            alert("El producto ya se encuentra dentro del carrito")
         }
     }
 
@@ -38,7 +45,9 @@ const CartProvider = ({ children }) => {
         addItem,
         isInCart,
         deleteItem,
-        clearAll
+        clearAll,
+        totalItems,
+        totalPrice,
     }
 
     return (
@@ -48,5 +57,5 @@ const CartProvider = ({ children }) => {
     )
 }
 
-export default CartContext;
 export { CartProvider };
+export default CartContext;
