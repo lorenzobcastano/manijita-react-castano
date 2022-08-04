@@ -7,14 +7,14 @@ return (
     <div className='container'>
         <div className="row">
             <div className='col-sm-4 '>
-        {items.map(({id,nombre,precio,cantidad,pictureUrl})=>(
+        {items.map((item)=>(
         <Item 
-        id={id}
-        nombre={nombre}
-        precio={precio}
-        cantidad={cantidad}
-        pictureUrl={pictureUrl}
-        key={id}
+        id={item.id}
+        nombre={item.nombre}
+        precio={item.precio}
+        cantidad={item.cantidad}
+        pictureUrl={item.pictureUrl}
+        key={item.id}
         /> 
         ))}
         </div>

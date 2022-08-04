@@ -1,21 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
+import { useParams } from "react-router-dom";
 import ItemList from './ItemList';
-import products from "../products.json"
-
-
-
-
+import { getItems, getItemsFiltered } from "../firebase/firebase";
 
 const ItemListContainer = ({greeting}) => {
-    
-new Promise((resolve,reject)=>{
-    setTimeout(()=>{
-        resolve(products,setLoader(false));
-    },2000)
-    console.log(products);
-})
 
-const [loader,setLoader]= useState(true);
+    let {nombreCategoria} = useParams();
+
+    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState([]);
+
+useEffect(() => {
+(nombreCategoria === undefined ? (getItems()) : getItemsFiltered(nombreCategoria)).then((snapshot) => {
+    setProducts(
+    snapshot.docs.map((document) => ({
+        ...document.data(),
+    }))
+    );
+    setTimeout(setLoading,2000,false);
+    
+});
+}, [nombreCategoria]);
 
 return (
 <div>
@@ -23,7 +28,7 @@ return (
 
 </div >
 <div className="">
-    {loader ? <span>CARGANDO...</span>:<ItemList items={products}/>}
+    {loading ? <span>CARGANDO...</span>:<ItemList items={products}/>}
 </div>
 </div>
 );

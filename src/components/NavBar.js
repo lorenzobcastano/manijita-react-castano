@@ -2,8 +2,8 @@ import  CartWidget  from "./CartWidget";
 import React  from "react"
 import {Link,NavLink} from "react-router-dom";
 // import navbar from "./navbar.css"
- import { useContext } from "react";
- import CartContext from "../context/CartContext";
+import { useContext } from "react";
+import CartContext from "../context/CartContext";
 const NavBar = () => {
     // let Links = [
     //     {name:"INICIO",link:"/"},
@@ -13,7 +13,7 @@ const NavBar = () => {
     //     {name:"SOBRE NOSOTROS",link:"/"},
     // ];
     
-     const context = useContext(CartContext)
+    const context = useContext(CartContext)
 
     return (
     <div className="shadow-md w-full  top-0 left-0">
