@@ -7,6 +7,7 @@ getDoc,
 getFirestore,
 query,
 where,
+addDoc,
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -17,8 +18,6 @@ const firebaseConfig = {
     messagingSenderId: "287837542281",
     appId: "1:287837542281:web:aba1a01f1246013d3ef358"
 };
-
-
 
 
 const app = initializeApp(firebaseConfig);
@@ -47,3 +46,17 @@ export const getItemsFiltered = (categ) => {
     return getDocs(q);
 }; 
 console.log();
+
+/*Método para enviar una orden nueva a la colección de "orders"*/
+
+export const sendOrder = (items,total) => {
+    const order = {
+    buyer: {name: "Lorenzo", phone: "011+248457", email: "caslor@gmail.com"},
+    items,
+    total
+    }
+    const ordersCollection = collection(db,"orders")
+    addDoc(ordersCollection, order).then(doc => console.log(doc.id));
+}
+
+

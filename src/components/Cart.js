@@ -1,14 +1,22 @@
-import React from 'react'
+import React,{useState} from 'react'
 import CartItem from './CartItem';
 import { useContext } from "react";
 import { Link } from 'react-router-dom';
 import CartContext from '../context/CartContext';
+import {sendOrder} from "../firebase/firebase";
 
 
 function Cart() {
 
     const { cart, clearAll, totalItems, totalPrice } = useContext(CartContext)
 
+    const [idOrder, setIdOrder] = useState("")
+
+    const placeOrder = () =>  {
+      console.log("Se sube la orden")
+      sendOrder(cart, totalPrice)
+      setIdOrder("Testing")
+    }
   return (
 
     <section>
@@ -31,10 +39,29 @@ function Cart() {
       </div>
 
       <div className='mt-10 text-center'>
-      {cart.length > 0 ? <button className="btn btn-primary btn-block w-48" onClick={clearAll}>Pasar al pago</button>
+      {cart.length > 0 ?
+          <div>
+          <button className="btn btn-primary w-48 mr-10" onClick={placeOrder}>Subir Orden</button>
+          <button className="btn btn-primary w-48" onClick={clearAll}>Borrar todo</button>
+
+          {idOrder !== "" &&
+          <div className="mt-10 alert alert-success shadow-lg w-8/12 m-auto">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>Tu orden ha sido subida. Order ID : {idOrder} </span>
+            </div>
+          </div>
+          }
+              </div>
           :
-          <Link to="../"> <p>Seccion en Desarrollo</p>
-          <h1>Carrito Vacio</h1><button className="btn btn-primary btn-block w-48" onClick={clearAll}>COMPRAR PRODUCTOS</button></Link>}
+          <div>
+            <h1 className='mb-10'>Carrito Vacio</h1>
+            <Link to="../">
+              <button className="btn btn-primary btn-block w-48">Volver a Página Principal</button>
+            </Link>
+          </div>
+        }
+        
       </div>
     </section>
 
